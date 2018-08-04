@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>伐木累</title>
+    <script src="javascripts/jquery-1.11.1.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/toto.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .btn{
+        background-color: #f4524d;
+        box-shadow:0 5px 0 #f11f18;
+        border-radius: 100%;
+        position: relative;
+        top:0;
+        transition: all 0.2s ease-in-out 0s;
+        font-size:15px;
+        text-transform: capitalize;
+        color:#fff;
+        padding:14px 20px;
+      }
+      .btn:active{
+        box-shadow: 0 2px 0 #f11f18;
+        top:3px;
+      }
+    </style>
+    <script>
+    $(function(){
+      $("ul.pagination li").each(function(){
+        //alert($(this).index()+1);
+        if($(this).hasClass('active')){
+          alert($(this).val());
+        }
+      })
+    })
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div class="search bar7 navbar-fixed-top">
+        <!--<a href="#" ><img src="images/ct.png" style="height:50px;border-radius:25px;"/></a>
+        <b>王甲评</b>
+        <a href="/reg">注册</a><a>/</a><a href="/login">登录</a>-->
+        <img src="uploads/王甲评.jpg" onerror="this.src='images/noimage.png'" style="width:68px;height:68px;border-radius:100%;" />
+        <h5 style="display:inline-block;font-weight:bold;">王甲评</h5>
+        <a>登出</a>
+        <form>
+            <input type="text" id="bar" placeholder="请输入您要搜索的内容...">
+            <button type="submit" id="bar"></button>
+        </form>
+      </div>
+    </div>
+      <span style="height:150px;display:block;"></span>
+      <div class="need">
+        <div class="needea">
+          <ul class="media-list">
+              <li class="media">
+                <a href="#" class="pull-left">
+                  <img class="media-object" src="images/ct.png">
+                </a>
+              <div class="media-body">
+                <h4 class="media-heading">媒体对象列表111</h4><span class="badge pull-right zxs">在悬赏</span>
+                <div class="media-body">沿着荷塘，是一条曲折的小煤屑路。这是一条幽僻的路；白天也少人走，夜晚更加寂寞。荷塘四周，长着许多树，蓊蓊（wěng）郁郁（2）的。路的一旁，是些杨柳，和一些不知道名字的树。没有月光的晚上，这路上阴森森的，有些怕人。今晚却很好，虽然月光也还是淡淡的。</div>
+              </div>
+            </li>
+          </ul>
+          <div class="panel-body" style="text-align:center;">
+              <a href="#" class="btn btn-lg red button-right">聊</a>
+          </div>
+        </div>
+        <div class="needea">
+          <ul class="media-list">
+              <li class="media">
+                <a href="#" class="pull-left">
+                  <img class="media-object" src="images/ct.png">
+                </a>
+              <div class="media-body">
+                <h4 class="media-heading">媒体对象列表111</h4><span class="badge pull-right yjj">已解决</span>
+                <div class="media-body">沿着荷塘，是一条曲折的小煤屑路。这是一条幽僻的路；白天也少人走，夜晚更加寂寞。荷塘四周，长着许多树，蓊蓊（wěng）郁郁（2）的。路的一旁，是些杨柳，和一些不知道名字的树。没有月光的晚上，这路上阴森森的，有些怕人。今晚却很好，虽然月光也还是淡淡的。</div>
+              </div>
+            </li>
+          </ul>
+          <div class="panel-body">
+              <div class="pull-left lla" style="margin-left:25px;" href="#">评论</div>
+              <div class="pull-right lla" href="#">帮忙</div>
+          </div>
+        </div>
+        <div class="needea">
+          <ul class="media-list">
+              <li class="media">
+                <a href="#" class="pull-left">
+                  <img class="media-object" src="images/ct.png">
+                </a>
+              <div class="media-body">
+                <h4 class="media-heading">媒体对象列表111</h4><span class="badge pull-right zxs">在悬赏</span>
+                <div class="media-body">沿着荷塘，是一条曲折的小煤屑路。这是一条幽僻的路；白天也少人走，夜晚更加寂寞。荷塘四周，长着许多树，蓊蓊（wěng）郁郁（2）的。路的一旁，是些杨柳，和一些不知道名字的树。没有月光的晚上，这路上阴森森的，有些怕人。今晚却很好，虽然月光也还是淡淡的。</div>
+              </div>
+            </li>
+          </ul>
+          <div class="panel-body">
+              <div class="pull-left lla" style="margin-left:25px;" href="#">评论</div>
+              <div class="pull-right lla" href="#">帮忙</div>
+          </div>
+        </div>
+      </div>
+      <nav aria-label="...">
+      <ul class="pagination">
+        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+        <li class="active" value="1"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+     </ul>
+   </nav>
+    <!--以上为中部和上部-->
+    <span style="height:150px;display:block;"></span>
+    <div class="fonav">
+      <ul>
+          <li>
+            <div id="mess" style="cursor:pointer;" onclick="location.href='\post'"><img src="images/ct.png" height="20"><p style="font-weight:bold;color:#ffffff;">消息</p></div>
+              <!--<a href="#"><span><img src="images/ct.png" height="20"></span><span>消息</span></a>-->
+          </li>
+          <li style="position:relative;text-align:-webkit-center">
+              <div style="border-radius:25px;background-color:skyblue;width:40px;height:40px;"><p style="font-weight:bold;color:#ffffff;font-size:30px;"><a href="/post">+</a></p></div>
+          </li>
+          <li>
+              <div id="ger" style="cursor:pointer;" onclick="location.href='\post'"><img src="images/ct.png" height="20"><p style="font-weight:bold;color:#ffffff;">个人中心</p></div>
+          </li>
+      </ul>
+    </div>
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="javascripts/bootstrap.min.js"></script>
+  </body>
+</html>

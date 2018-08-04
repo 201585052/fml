@@ -1,0 +1,111 @@
+<%- include header %>
+<style>
+  .btnn{
+    background-color: #f4524d;
+    box-shadow:0 5px 0 #f11f18;
+    border-radius: 100%;
+    position: relative;
+    top:0;
+    transition: all 0.2s ease-in-out 0s;
+    font-size:15px;
+    text-transform: capitalize;
+    color:#fff;
+    padding:14px 20px;
+    cursor:pointer;
+  }
+  .btnn:active{
+    box-shadow: 0 2px 0 #f11f18;
+    top:3px;
+    cursor: pointer;
+  }
+  a:hover{
+    color:#ffffff;
+  }
+</style>
+<h3 align="center">我的消息</h3>
+<div class="need">
+<% posts.forEach(function (post,index){ %>
+  <% if(post.res == 1 ){ %>
+  <div class="needea">
+    <ul class="media-list">
+        <li class="media">
+          <a href="#" class="pull-left">
+            <img class="media-object" src="uploads/<%= user.name %>.jpg" onerror="this.src='images/noimage.png'" style="height:50px;width:50px;border-radius:100%;">
+          </a>
+        <div class="media-body">
+          <h4 class="media-heading" style="font-weight:bold;"><%= post.name %></h4><span class="badge pull-right zxs">在悬赏</span>
+          <div class="media-body"><%- post.post %></div>
+        </div>
+      </li>
+    </ul>
+    <!-- 评论区 -->
+    <% post.comments.forEach(function(comment, index){ %>
+      <div class="panel panel-default">
+        <div class="panel-heading"><img src="uploads/<%= comment.owner %>.jpg" onerror="this.src='images/noimage.png'" style="width:34px;height:34px;border-radius:100%;" ><%= comment.owner %></div>
+          <div class="panel-body">
+            <%= comment.content %>
+            <a onclick="alert('悬赏成功!')" href="/remove/<%= post.name %>/<%= post.idd %>/<%= post.xmark %>/<%= comment.owner %>"  class="btnn btn-lg red button-right pull-right" >赏</a>
+            <!--虽然我觉得应该数据库真的变化了再提示的。。。-->
+          </div>
+      </div>
+    <% }) %>
+  </div>
+  <% } %>
+<% }) %>
+<script>
+<% posts.forEach(function(post,index){ %>
+  $(function(){
+    //console.log("按钮名：<%= post.time.seconds %>bb");
+    //console.log("表名:<%= post.time.seconds %>")
+    $("#<%= post.idd %>bb").click(function(){
+        //document.write(1);测试比较好,console.log一刷新就没了
+        alert("悬赏成功！");
+        $("#f<%= post.idd %>").submit();
+    })
+  })
+<% }) %>
+</script>
+
+
+<!-- 以下进入分页部分，不在遍历post过程中 -->
+<br />
+  <div>
+    <script>
+      $(function(){
+        $("ul.pagination li").each(function(){
+          //alert($(this).index()+1);
+          if($(this).text() == <%= page %>){
+            $(this).addClass("active");
+          }
+          /*if($(this).hasClass('active')){
+            alert($(this).val());
+          }*/
+        })
+      })
+    </script>
+    <!--以下是生成元素部分-->
+    <nav aria-label="..." style="float:right;">
+      <ul class="pagination">
+        <li><a href="?p=<%= page-1 %>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+        <% for(var bil=page;bil<=Math.min(total/10+(total%10 == 0?0:1),page+2);bil++){ %>
+        <li><a href="?p=<%= bil %>" style="z-index:0;"><%= bil%></a></a></li>
+        <% } %>
+        <li><a href="?p=<%= page+1 %>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+     </ul>
+   </nav>
+   <!--以下是生成元素部分-->
+   <!--仅限于前后两页翻及限定-->
+   <% if (isFirstPage) { %>
+     <script>$("ul.pagination li:first").addClass("disabled");$("ul.pagination li:first a").attr("href","#");</script>
+   <% }else{ %>
+     <script>$("ul.pagination li:first").removeClass("disabled");$("ul.pagination li:first a").attr("href","?p=<%= page-1 %>");</script>
+   <% } %>
+   <% if (isLastPage) { %>
+     <script>$("ul.pagination li:last-child").addClass("disabled");$("ul.pagination li:last-child a").attr("href","#");</script>
+   <% }else{ %>
+     <script>$("ul.pagination li:last-child").removeClass("disabled");$("ul.pagination li:last-child a").attr("href","?p=<%= page+1 %>")</script>
+   <% } %>
+   <!--仅限于前后两页翻及限定-->
+  </div>
+</div>
+<%- include footer %>

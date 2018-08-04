@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title><%= title %></title>
+
+    <!-- Bootstrap -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/toto.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="javascripts/jquery-1.11.1.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="container">
+      <div class="search bar7 navbar-fixed-top">
+        <% if(user) { %>
+          <% statu=2 %>
+        <% } %>
+        <% if(statu == 1) {%>
+          <script>alert("注册成功！")</script>
+        <%} %>
+        <% if (statu == 0 || statu == 1) {%>
+          <a href="/reg">注册</a><a>/</a><a href="/login">登录</a>
+        <% }else if (statu == 2) { %>
+          <img src="uploads/<%= user.name %>.jpg" onerror="this.src='images/noimage.png'" style="width:68px;height:68px;border-radius:100%;" />
+          <h5 style="display:inline-block;font-weight:bold;"><%= user.name %></h5>
+          <% } %>
+        <% if (success) { %>
+          <script>console.log("至此一切正常")</script>
+          <% } %>
+        <% if (error) { %>
+          <div><%= error %> </div>
+        <% } %>
+
+        <form action="/search" method="GET" >
+            <input type="text" name="keyword" id="bar" placeholder="请输入您要搜索的学校名...">
+            <button type="submit" id="bar"></button>
+        </form>
+      </div>
+    </div>
+    <span style="height:150px;display:block;"></span>

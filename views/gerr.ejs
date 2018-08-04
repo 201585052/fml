@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>html</title>
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_1459473269_4751618.css">
+	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="stylesheets/grtyle.css" rel="stylesheet">
+	<script src="javascripts/jquery-1.11.1.min.js"></script>
+	<script src="javascripts/bootstrap.min.js"></script>
+	<!--必要样式-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/menu_elastic.css" />
+	<script src="javascripts/snap.svg-min.js"></script>
+	<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="huibg">
+	<div class="menu-wrap">
+		<nav class="menu">
+			<div class="icon-list">
+				<a href="/"><i class="iconfont icon-home"></i><span>首页</span></a>
+				<a href="/messa"><i class="iconfont icon-yonghux"></i><span>消息</span></a>
+				<a href="/gerr2"><i class="iconfont icon-liebiao"></i><span>修改信息</span></a>
+				<a href="/xsqd"><i class="iconfont icon-xitongmingpian"></i><span>悬赏清单</span></a>
+				<a href="/logout"><i class="iconfont icon-xitongmingpian"></i><span>登出</span></a>
+			</div>
+		</nav>
+		<button class="close-button" id="close-button">Close Menu</button>
+		<div class="morph-shape" id="morph-shape" data-morph-open="M-1,0h101c0,0,0-1,0,395c0,404,0,405,0,405H-1V0z">
+			<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+				<path d="M-1,0h101c0,0-97.833,153.603-97.833,396.167C2.167,627.579,100,800,100,800H-1V0z" />
+			</svg>
+		</div>
+	</div>
+	<nav class="navbar text-center">
+		<button class="topleft" onclick="location.href='/'"><span class="iconfont icon-fanhui"></span></button>
+		<a class="navbar-tit center-block" style="cursor:default;">个人中心</a>
+		<button class="topnav" id="open-button"><span class="iconfont icon-1"></span></button>
+	</nav>
+	<div class="vipcenter">
+		<div class="vipheader">
+			<a href="/touxiang" style="cursor:default;">
+				<div class="touxiang" style="cursor:pointer;"><img src="uploads/<%= user.name %>.jpg" onerror="this.src='images/noimage.png'" /><span class="edit_pic" style="display:none;position:absolute;left:49%;top:15%;width:30px;height:30px;background:url(images/edit_photo.png) no-repeat"></span></div>
+				<script>
+					$(document).ready(function() {
+						$(".touxiang").mouseover(function() {
+							$(".edit_pic").css("display", "block");
+						});
+						$(".touxiang").mouseout(function() {
+							$(".edit_pic").css("display", "none");
+						});
+					});
+				</script>
+				<div class="name">
+					<%= user.name %>
+				</div>
+				<div class="gztt">已登录</div>
+			</a>
+		</div>
+		<div class="vipsan">
+			<div class="col-xs-4 text-center"><a><h4>受帮助</h4><p><%= user.hbehe %></p></p></a></div>
+			<div class="col-xs-4 text-center"><a><h4>已帮助</h4><p><%= user.hashe %></p></a></div>
+			<div class="col-xs-4 text-center"><a><h4>积分</h4><p><%= user.mark %></p></a></div>
+		</div>
+		<ul class="vipul">
+			<li>
+				<a href="/gerr2">
+					<div class="icc"><i class="iconfont icon-yonghux"></i></div>
+					<div class="lzz">个人信息</div>
+					<div class="rizi"><i class="iconfont icon-jiantouri"></i></div>
+				</a>
+			</li>
+			<li>
+				<a href="/xsqd">
+					<div class="icc"><i class="iconfont icon-liebiao"></i></div>
+					<div class="lzz">悬赏清单</div>
+					<div class="rizi"><i class="iconfont icon-jiantouri"></i></div>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<script src="javascripts/classie.js"></script>
+	<script src="javascripts/main3.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title><%= title %></title>
+
+    <!-- Bootstrap -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/toto.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="javascripts/jquery-1.11.1.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="container">
+      <div class="search bar7 navbar-fixed-top">
+        <% if(user) { %>
+          <% statu=2 %>
+        <% } %>
+        <% if (statu == 0 || statu == 1) {%>
+          <a href="/reg">注册</a><a>/</a><a href="/login">登录</a>
+        <% }else if (statu == 2) { %>
+          <img src="uploads/<%= user.name %>.jpg" onerror="this.src='images/noimage.png'" style="width:68px;height:68px;border-radius:100%;" />
+          <h5 style="display:inline-block;font-weight:bold;"><%= user.name %></h5>
+          <% } %>
+
+        <form action="/search" method="GET" >
+            <input type="text" name="keyword" id="bar" placeholder="请输入您要搜索的学校名...">
+            <button type="submit" id="bar"></button>
+        </form>
+      </div>
+    </div>
+    <span style="height:150px;display:block;"></span>
+<style>
+  .btnn{
+    background-color: #f4524d;
+    box-shadow:0 5px 0 #f11f18;
+    border-radius: 100%;
+    position: relative;
+    top:0;
+    transition: all 0.2s ease-in-out 0s;
+    font-size:15px;
+    text-transform: capitalize;
+    color:#fff;
+    padding:14px 20px;
+    cursor:pointer;
+  }
+  .btnn:active{
+    box-shadow: 0 2px 0 #f11f18;
+    top:3px;
+    cursor: pointer;
+  }
+</style>
+<h3 style="width:150px;background-color:lightblue;border-radius:12px;text-align:center;"><%= subtil %></h3>
+<hr style="border-top:1px solid #c3c1b8"/>
+<div class="need">
+<% posts.forEach(function (post,index){ %>
+  <div class="needea">
+    <ul class="media-list">
+        <li class="media">
+          <a href="#" class="pull-left">
+            <img class="media-object" src="uploads/<%= post.name %>.jpg" onerror="this.src='images/noimage.png'" style="height:50px;width:50px;border-radius:100%;" />
+          </a>
+        <div class="media-body">
+          <h4 class="media-heading" style="font-weight:bold;"><%= post.name %></h4><span class="badge pull-right"><%= post.res %></span>
+          <div class="media-body"><%- post.post %></div>
+        </div>
+      </li>
+    </ul>
+    <div class="panel-body" style="text-align:center;">
+    <%  if(user && user.name == post.name) { %>
+        <a  class="btnn btn-lg red button-right" href="/remove/<%= post.name %>/<%= post.idd %>/-1/0" >删</a>
+    <% }else{ %>
+        <a  class="btnn btn-lg red button-right"  data-toggle="modal" data-target="#mm<%= post.idd %>">聊</a>
+    <%  } %>
+    </div>
+    <!--聊模态框-->
+    <div class="modal fade" id="mm<%= post.idd %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">说出你的帮助</h4>
+          </div>
+          <div class="modal-body">
+            <form method="post" id="f<%= post.idd %>">
+              <input type="text" name="name" value="<%= post.name %>" style="display:none;" />
+              <input type="text" name="idc" value="<%= post.idd %>" style="display:none;" />
+              <textarea type="text" name="content" class="form-control"></textarea>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button"  class="btn btn-primary" id="<%= post.idd %>bb">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if( post.res == 0) { %>
+    <script>
+    //console.log("我还是走到了这里");
+    $("span.badge").addClass("zxs");
+    $("span.badge").text("在悬赏");
+    </script>
+  <%} else { %>
+    <script>
+    //console.log("我来到了不应该来的地方");
+    $("span.badge").addClass("yjj");
+    $("span.badge").text("已解决");
+    </script>
+  <% } %>
+<% }) %>
+<script>
+<% posts.forEach(function(post,index){ %>
+  $(function(){
+    //console.log("按钮名：<%= post.time.seconds %>bb");
+    //console.log("表名:<%= post.time.seconds %>")
+    $("#<%= post.idd %>bb").click(function(){
+      //document.write(1);测试比较好,console.log一刷新就没了
+      <% if(user) { %>
+        alert("您的帮助已发出哦~");
+        $("#f<%= post.idd %>").submit();
+      <% }else{ %>
+        alert("请先登录");
+      <% } %>
+    })
+  })
+<% }) %>
+</script>
+
+
+<!-- 以下进入分页部分，不在遍历post过程中 -->
+<br />
+  <div>
+    <script>
+      $(function(){
+        $("ul.pagination li").each(function(){
+          //alert($(this).index()+1);
+          if($(this).text() == <%= page %>){
+            $(this).addClass("active");
+          }
+          /*if($(this).hasClass('active')){
+            alert($(this).val());
+          }*/
+        })
+      })
+    </script>
+    <!--以下是生成元素部分-->
+    <nav aria-label="..." style="float:right;">
+      <ul class="pagination">
+        <li><a href="?p=<%= page-1 %>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+        <% for(var bil=page;bil<=Math.min(total/10+(total%10 == 0?0:1),page+2);bil++){ %>
+        <li><a href="?p=<%= bil %>" style="z-index:0;"><%= bil%></a></a></li>
+        <% } %>
+        <li><a href="?p=<%= page+1 %>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+     </ul>
+   </nav>
+   <!--以下是生成元素部分-->
+   <!--仅限于前后两页翻及限定-->
+   <% if (isFirstPage) { %>
+     <script>$("ul.pagination li:first").addClass("disabled");$("ul.pagination li:first a").attr("href","#");</script>
+   <% }else{ %>
+     <script>$("ul.pagination li:first").removeClass("disabled");$("ul.pagination li:first a").attr("href","?p=<%= page-1 %>");</script>
+   <% } %>
+   <% if (isLastPage) { %>
+     <script>$("ul.pagination li:last-child").addClass("disabled");$("ul.pagination li:last-child a").attr("href","#");</script>
+   <% }else{ %>
+     <script>$("ul.pagination li:last-child").removeClass("disabled");$("ul.pagination li:last-child a").attr("href","?p=<%= page+1 %>")</script>
+   <% } %>
+   <!--仅限于前后两页翻及限定-->
+  </div>
+</div>
+<%- include footer %>

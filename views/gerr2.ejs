@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>html</title>
+  <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_1459473269_4751618.css">
+  <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheets/grtyle.css" rel="stylesheet">
+  <script src="javascripts/jquery-1.11.1.min.js"></script>
+  <script src="javascripts/bootstrap.min.js"></script>
+  <!--必要样式-->
+  <link rel="stylesheet" type="text/css" href="stylesheets/menu_elastic.css" />
+  <script src="javascripts/snap.svg-min.js"></script>
+  <!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="huibg">
+  <div class="menu-wrap">
+    <nav class="menu">
+      <div class="icon-list">
+        <a href="/"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <a href="/messa"><i class="iconfont icon-yonghux"></i><span>消息</span></a>
+        <a href="/gerr2"><i class="iconfont icon-liebiao"></i><span>修改信息</span></a>
+        <a href="/xsqd"><i class="iconfont icon-xitongmingpian"></i><span>悬赏清单</span></a>
+        <a href="/logout"><i class="iconfont icon-xitongmingpian"></i><span>登出</span></a>
+      </div>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+    <div class="morph-shape" id="morph-shape" data-morph-open="M-1,0h101c0,0,0-1,0,395c0,404,0,405,0,405H-1V0z">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+        <path d="M-1,0h101c0,0-97.833,153.603-97.833,396.167C2.167,627.579,100,800,100,800H-1V0z" />
+      </svg>
+    </div>
+  </div>
+  <nav class="navbar text-center">
+    <button class="topleft" onclick="location.href='/gerr'"><span class="iconfont icon-fanhui"></span></button>
+    <a class="navbar-tit center-block">个人信息</a>
+    <button class="topnav" id="open-button"><span class="iconfont icon-1"></span></button>
+  </nav>
+
+<% if(success == '原密码输入错误！') {%>
+  <script>alert("原密码输入错误")</script>
+<% }else if(success == '密码修改成功!'){ %>
+  <script>alert("修改成功")</script>
+<% } %>
+  <div class="usercenter  accdv">
+    <form method="post" id="ffor">
+      <div class="row">
+        <div class="col-md-2">昵称：</div>
+        <div class="col-md-10">
+          <input type="text" name="nickname" value="<%= user.name %>" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">学校：</div>
+        <div class="col-md-10">
+          <input type="text" name="school" value="<%= user.school %>" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">邮箱：</div>
+        <div class="col-md-10">
+          <input type="text" name="form-email" value="<%= user.email %>" class="form-control">
+        </div>
+      </div>
+      <!--<div class="row">
+        <div class="col-md-2">更改密码：</div>
+        <div class="col-md-10">
+          <input type="text" name="form-password"  class="form-control">
+        </div>
+      </div>-->
+      <div class="row">
+        <div class="col-md-2">性别：</div>
+        <div class="col-md-10">
+          <label class="checkbox-inline">
+            <input type="radio" name="sex" id="optionsRadios3" value="0" checked> 男
+          </label>
+          <label class="checkbox-inline">
+            <input type="radio" name="sex" id="optionsRadios4" value="1"> 女
+          </label>
+        </div>
+      </div>
+      <% if ( user.sex==1 ) { %>
+        <script>
+          $("#optionsRadios3").removeAttr("checked");
+          $("#optionsRadios4").attr("checked", "checked");
+        </script>
+        <% } %>
+          <div class="row">
+            <div class="col-md-2">手机号：</div>
+            <div class="col-md-10">
+              <input type="text" name="phone" value="<%= user.phone %>" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">个人描述</div>
+            <div class="col-md-10">
+              <textarea class="form-control" name="introd" rows="3"><%= user.introd %></textarea>
+            </div>
+          </div>
+          <a data-toggle="modal" data-target="#exampleModal" style="float:right;">修改密码</a>
+          <span style="height:20px;display:block;"></span>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+              <button type="button" id="bc1" class="btn  btn-danger btn-block btn-lg">保存修改</button>
+            </div>
+          </div>
+    </form>
+  </div>
+
+  <!--修改密码模态框-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">修改密码</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" id="fffor">
+                <div class="form-group">
+                  <label for="recipient-name" class="control-label">原密码:</label>
+                  <input type="password" name="formla-password" class="form-control" id="recipient-yname">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="control-label">新密码:</label>
+                  <input type="password" name="form-password" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="control-label">重复密码:</label>
+                  <input type="password" name="form-repeat-password" class="form-control" id="recipient-name">
+                </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" id="bc2" class="btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--修改密码模态框-->
+
+  <!--专属js-->
+  <script src="javascripts/classie.js"></script>
+  <script src="javascripts/main3.js"></script>
+  <script src="javascripts/grscripts.js"></script>
+  <!--专属js-->
+</body>
+
+</html>
