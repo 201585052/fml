@@ -1,7 +1,0 @@
-//document.write(1);测试比较好,console.log一刷新就没了
-<% if(user) { %>
-  alert("您的帮助已发出哦~");
-  $("#f<%= post.idd %>").submit();
-<% }else{ %>
-  alert("请先登录");
-<% } %>

@@ -11,7 +11,7 @@ function Post(name, res, post, comments, idd, xmark, school) {
   this.school = school;  //悬赏所在学校
 }
 
-module.exports = Post;
+
 
 //存储一篇文章及其相关信息
 Post.prototype.save = function(callback) {
@@ -245,3 +245,4 @@ Post.remove = function(name, idd, xmark, coname, callback) {
     });
   });
 };
+module.exports = Post;

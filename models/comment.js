@@ -8,8 +8,6 @@ function Comment(name, owner, kcz, content, idc) {
   this.idc = idc; // 评论所在文章的编号
 }
 
-module.exports = Comment;
-
 //存储一条留言信息
 Comment.prototype.save = function(callback) {
   var name= this.name, //记录文章的主人
@@ -57,3 +55,4 @@ Comment.prototype.save = function(callback) {
     });
   });
 };
+module.exports = Comment;

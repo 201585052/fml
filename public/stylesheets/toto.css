@@ -82,7 +82,6 @@ button#bar:before{
 margin-top: 10px;
 }
 h4.media-heading{
-  margin-top:8px;
   display:inline;
 }
 span.zxs{
@@ -92,7 +91,7 @@ span.yjj{
   background-color: darkorchid;
 }
 .panel-body{
-  rgba(255, 0, 0, 0.5);
+  background-color:rgba(255, 0, 0, 0.5);
 }
 a:link{
   text-decoration: none;
@@ -143,4 +142,16 @@ body{background-color: lavender;}
     color: #fff;
     font-size: 14px;
     line-height: 22px;
+}
+
+@media screen and (min-width: 1000px){
+    .search{
+      display: flex;
+    }
+    .bar7 form{
+       width: 50px;
+    }
+    a[href="/reg"]{
+      margin-left: 120px;
+    }
 }

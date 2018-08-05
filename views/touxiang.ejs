@@ -44,7 +44,10 @@
     $(function() {
       $('#uploadSubmit').click(function() {
         var file = document.getElementById("picID").files[0];
-        //console.log(file);
+        if(file.size >= 204800){//size是直接以字节为单位的所以这个取个差不多200KB上限
+             alert("上传图片大小不能大于200KB");
+             return;
+        }
         var formData = new FormData();
         formData.append("avatar", file);
         $.ajax({

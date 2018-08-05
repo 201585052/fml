@@ -18,7 +18,7 @@ module.exports = function(app) {
         posts = [];
       }
       res.render('index', {
-        title: '主页',
+        title: 'fml',
         statu: 0,
         user: req.session.user,
         idss: req.session.idss,
