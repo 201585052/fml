@@ -3,8 +3,8 @@ npm install 一下 node app.js即可运行，如果挂在服务器上可以用fo
 若有报错
 { [Error: Cannot find module '../build/Release/bson'] code: 'MODULE_NOT_FOUND' } 
   js-bson: Failed to load c++ bson extension, using pure JS version
-
-cp node_modules\bson\browser_build\bson node_modules\bson\build\Release\bson
+  
+cp node_modules/bson/browser_build/bson.js node_modules/bson/build/Release/
 
 已提升与改善的地方：
 
