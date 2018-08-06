@@ -6,6 +6,8 @@ npm install 一下 node app.js即可运行，如果挂在服务器上可以用fo
   
 cp node_modules/bson/browser_build/bson.js node_modules/bson/build/Release/
 
+[移动端项目地址](https://201585052.github.io/fml)
+
 已提升与改善的地方：
 
 * 图像上传文件限制
